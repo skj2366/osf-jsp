@@ -17,7 +17,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class PBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private static String savePath = "D:\\study\\workspace\\osf-jsp\\WebContent\\upload";
+	//private static String savePath = "D:\\study\\workspace\\osf-jsp\\WebContent\\upload"; // 학원 컴퓨터
+	private static String savePath = "E:\\java\\study\\git\\osf-jsp\\WebContent\\upload"; //LG그램
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
