@@ -29,5 +29,8 @@ String rPath = request.getContextPath();
 		</tr>
 	</table>
 </form>
+<form method="get" action="/pboard/list">
+	<button>list</button>
+</form>
 </body>
 </html>
