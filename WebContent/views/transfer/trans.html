@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	/*var arr = []; //== var arr2 = new Array();
+	arr[arr.length] = 1;
+	arr[arr.length] = 1;
+	arr.push(3); // like add 위에서 0,1번방을 사용했기에 자연스레 2번방으로 3의 값이 들어감
+	alert(arr[2]);
+	var map = {};
+	map.key = 'value';// 둘다 키를 만드는 .... 문법
+	map['key'] = '난 다른 value'; // 둘다 키를 만드는 .... 문법
+	alert(map.key);*/
+	
+	/*var result = [{"message":{"result":"translatedText":"내가 아까 걔야"}}];
+	var str = JSON.stringify(result);
+	alert(str);*/
+	
+	var req = new XMLHttpRequest();
+	req.open('GET','/trans');
+	req.onreadystatechange = function(){
+		if(req.readyState==4 && req.status==200){
+			document.querySelector('#rDiv').innerHTML = req.response;
+		}
+	}
+	req.send();
+	
+	
+</script>
+<body>
+sdasdsad
+</body>
+</html>

@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Map;
+
+import com.google.gson.Gson;
 
 // 네이버 기계번역 (Papago SMT) API 예제
 public class Transfer {
@@ -22,7 +25,8 @@ public class Transfer {
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             // post request
-            String postParams = "source=ko&target=en&text=" + text;
+            //String postParams = "source=ko&target=en&text=" + text;
+            String postParams = "source=ko&target=ja&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);
@@ -41,7 +45,29 @@ public class Transfer {
                 response.append(inputLine);
             }
             br.close();
-            System.out.println(response.toString());
+            Gson gson = new Gson();
+            Map<String,Object> result = gson.fromJson(response.toString(),Map.class);
+            Map<String,Object> mMap = (Map<String,Object>) result.get("message");
+            Map<String,Object> rMap = (Map<String,Object>) mMap.get("result");
+            /*Map<String,Map<String,Map<String,String>>> result = gson.fromJson(response.toString(), Map.class);
+            System.out.println(result.get("message").get("result").get("translatedText"));*/
+            //한줄로 줄이면 이렇다. 다중 맵.
+            
+//            System.out.println(response.toString());
+//            System.out.println(result);
+            /*{message={@type=response,
+             *  @service=naverservice.nmt.proxy,
+             *  @version=1.0.0, 
+             *  result={srcLangType=ko, 
+             *  		tarLangType=ja, 
+             *  		translatedText=こんにちは!友達!良い朝だよ!
+             *  		}
+             *  }
+             * }
+             * ""가 사라짐 .
+             */
+            System.out.println(rMap.get("translatedText"));
+//          こんにちは!友達!良い朝だよ! //Wow.translatedText만 출력됨.  
         } catch (Exception e) {
             System.out.println(e);
         }

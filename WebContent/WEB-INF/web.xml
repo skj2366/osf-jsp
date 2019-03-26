@@ -33,10 +33,9 @@
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/test/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	 <servlet-name>FoodServlet</servlet-name>
-   	<servlet-class>com.osf.test.servlet.FoodServlet</servlet-class>
+    <servlet-name>FoodServlet</servlet-name>
+    <servlet-class>com.osf.test.servlet.FoodServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FoodServlet</servlet-name>
@@ -46,4 +45,13 @@
     <servlet-name>FoodServlet</servlet-name>
     <url-pattern>/foods/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>TransServlet</servlet-name>
+    <servlet-class>com.osf.test.servlet.TransServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransServlet</servlet-name>
+    <url-pattern>/trans/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
